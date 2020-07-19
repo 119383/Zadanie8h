@@ -6,6 +6,7 @@
 package llipowicz.SauceDemo.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import llipowicz.SauceDemo.tests.scenarios.LoginScenarios;
 import llipowicz.SauceDemo.tests.tools.LeftMenuTools;
 import llipowicz.SauceDemo.tests.tools.LoginTools;
 import org.junit.jupiter.api.AfterEach;
@@ -80,6 +81,6 @@ public class LoginTests {
       */     
      @Test
      public void testSuccessfullyLoggedInWithProperCredentials() {
-        assertEquals("Logout",LeftMenuTools.loginAndGetLogoutButtonText(driver, "standard_user", "secret_sauce"));
+        assertEquals("Logout",LoginScenarios.loginAndGetLogoutButtonText(driver, "standard_user", "secret_sauce"));
      } 
 }

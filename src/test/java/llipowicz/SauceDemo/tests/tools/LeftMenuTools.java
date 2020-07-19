@@ -14,11 +14,7 @@ import org.openqa.selenium.WebElement;
  * @author llipowicz
  */
 public class LeftMenuTools {
-    public static String loginAndGetLogoutButtonText(WebDriver driver, String login, String password){
-        LoginTools.loginToPage(driver, login, password);
-        clickOnMenuButton(driver);
-        return getLogoutButtonText(driver);
-    }
+
     
     public static void clickOnMenuButton(WebDriver driver){
         WebElement menuButton = driver.findElement(By.xpath("/html/body/div/div[1]/div/div[3]/div/button"));
