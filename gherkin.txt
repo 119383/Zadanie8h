@@ -1,0 +1,43 @@
+Scenario Outline: The site will display proper error information when provided wrong credentials or while attempting to log in as locked out user.
+
+Given I am at the login page
+When I attempt to log in by providing username '<username>' and password '<password>'
+Then should get a notification saying '<notification_text>'.
+
+Examples:
+
+| username            | password          | notification_text                                                          |
+| special\name%^&*(   | secret_sauce      | Epic sadface: Username and password do not match any user in this service  |
+| wrongusername       | secret_sauce      | Epic sadface: Username and password do not match any user in this service  |
+| standard_user       | wrongpass         | Epic sadface: Username and password do not match any user in this service  |
+| standard_user       | special!@#$%^&*() | Epic sadface: Username and password do not match any user in this service  |
+| locked_out_user     | secret_sauce      | Epic sadface: Sorry, this user has been locked out.                        |
+
+
+Scenario: The shop should offer possibility to sort offered items in alphabetical order.
+
+Given I am at the login page
+When I log in
+And I press sort by Name (A - Z)
+Then items should be sorted in alphabetical order
+
+Scenario: The shop should offer possibility to sort offered items in reversed alphabetical order.
+
+Given I am at the login page 
+When I log in
+And I press sort by Name (Z - A)
+Then items should be sorted in reversed alphabetical order
+
+Scenario: The shop should offer possibility to sort offered items by price (ascending)
+
+Given I am at the login page 
+When I log in
+And I press sort by Price (low to high)
+Then items should be sorted in ascending order
+
+Scenario: The shop should offer possibility to sort offered items by price (descending)
+
+Given I am at the login page 
+When I log in
+And I press sort by Price (high to low)
+Then items should be sorted in descending order
