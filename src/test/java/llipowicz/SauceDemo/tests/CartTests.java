@@ -57,4 +57,9 @@ public class CartTests {
         assertEquals(2, CartScenarios.getNumberOfItemsInTheCartAfterPuttingInsideFollowingItems(new ArrayList<>(List.of("Test.allTheThings() T-Shirt (Red)","Sauce Labs Onesie")), driver));
     }
     
+     @Test
+    public void addTwoItemsIntoTheCartAndCheckIfDetailsAreDisplayed() {
+        assertEquals((new ArrayList<>(List.of("Test.allTheThings() T-Shirt (Red)","Sauce Labs Onesie"))), CartScenarios.getListOfItemsInTheCartAfterPuttingIntoItTheFollowing(new ArrayList<>(List.of("Test.allTheThings() T-Shirt (Red)","Sauce Labs Onesie")), driver));
+    }    
+    
 }

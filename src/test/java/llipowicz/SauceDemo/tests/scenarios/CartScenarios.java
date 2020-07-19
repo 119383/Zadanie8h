@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import llipowicz.SauceDemo.tests.tools.CartTools;
 import llipowicz.SauceDemo.tests.tools.InventoryTools;
 import llipowicz.SauceDemo.tests.tools.LoginTools;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -19,10 +20,15 @@ import org.openqa.selenium.WebElement;
 public class CartScenarios {
     public static int getNumberOfItemsInTheCartAfterPuttingInsideFollowingItems(ArrayList<String>items, WebDriver driver){
         LoginTools.loginToPage(driver);
-        for (String item : items){
-            WebElement element = InventoryTools.findItemByName(item, driver);
-            InventoryTools.addItemToCart(element);
-        }
+        CartTools.addElementsToCart(items, driver);
         return CartTools.getNumberOfItemsInTheCartBasedOnIcon(driver);
     }
+   
+    public static ArrayList<String> getListOfItemsInTheCartAfterPuttingIntoItTheFollowing(ArrayList<String>items, WebDriver driver){
+        LoginTools.loginToPage(driver);
+        CartTools.addElementsToCart(items, driver);
+        CartTools.inspectTheCart(driver);
+        return CartTools.getItemsInCart(driver);
+    }
+    
 }
