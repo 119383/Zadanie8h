@@ -38,4 +38,21 @@ public class InventoryTools {
         }
         return itemValues;
     }
+    
+    public static WebElement findItemByName(String itemName, WebDriver driver){
+        WebElement result = null;
+        List<WebElement> allItemElements = driver.findElements(By.className("inventory_item"));
+        for (WebElement singleItem : allItemElements){
+            String valueInPage = singleItem.findElement(By.className("inventory_item_name")).getText();
+            if (valueInPage.equals(itemName)){
+                result = singleItem;
+            }
+        }
+        return result;
+    }
+    
+    public static void addItemToCart(WebElement element){
+        WebElement addButton = element.findElement(By.className("btn_inventory"));
+        addButton.click();
+    }
 }
