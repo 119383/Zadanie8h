@@ -41,3 +41,10 @@ Given I am at the login page
 When I log in
 And I press sort by Price (high to low)
 Then items should be sorted in descending order
+
+Scenario: The number of items in the cart should be visible in the icon next to cart
+
+Given I am at the login page 
+When I log in
+And I add items "Test.allTheThings() T-Shirt (Red)","Sauce Labs Onesie" to the cart
+Then I should have an icon saying "2" right next to the cart
