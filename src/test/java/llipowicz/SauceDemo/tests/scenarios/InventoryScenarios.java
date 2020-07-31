@@ -17,7 +17,8 @@ import org.openqa.selenium.support.ui.Select;
  * @author llipowicz
  */
 public class InventoryScenarios {
-    public static ArrayList<String>getElementsInSortByPriceAscending(WebDriver driver){
+    // missing space after type
+    public static ArrayList<String> getElementsInSortByPriceAscending(WebDriver driver){
         LoginTools.loginToPage(driver);
         Select dropDownMenu= new Select(driver.findElement(By.className("product_sort_container")));
         dropDownMenu.selectByVisibleText("Price (low to high)");

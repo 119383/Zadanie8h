@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package llipowicz.SauceDemo.tests.scenarios;
-
+// mess: unused imports
+// basically in every class are typos, unused comments - it looks ugly :(
 import java.util.ArrayList;
 import llipowicz.SauceDemo.tests.tools.CartTools;
 import llipowicz.SauceDemo.tests.tools.InventoryTools;

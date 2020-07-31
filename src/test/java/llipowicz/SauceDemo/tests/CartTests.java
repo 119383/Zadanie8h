@@ -22,13 +22,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  *
  * @author llipowicz
  */
+/*
+1. this class should extend class base test where methods like @Before* or @After* would be implemented - less duplication
+2. you are splitting CartScenario outside of CartTests - if you dont use gherking, it makes no sense
+ */
 public class CartTests {
     
     WebDriver driver;    
     
     public CartTests() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
         WebDriverManager.firefoxdriver().setup();
@@ -40,20 +44,26 @@ public class CartTests {
     
     @BeforeEach
     public void setUp() {
+        // why are you starting new FF instance before each test? you should reuse instance in order to save time/resources
         driver  = new FirefoxDriver();
+        // this should be taken from propety file (like test.properties) from resources package level
         driver.get("https://www.saucedemo.com");
     }
     
     @AfterEach
     public void tearDown() {
+        // if you would reuse FF instance, you would need to clean up after test (e.g. refresh page to root or logout)
         driver.close();
     }
 
+    // mess
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
      @Test
     public void addTwoItemsIntoTheCartAndCheckIfCartIconDisplaysTwoItems() {
+        // too long line (120 chars at most)
+         // consider using fluent assertions
         assertEquals(2, CartScenarios.getNumberOfItemsInTheCartAfterPuttingInsideFollowingItems(new ArrayList<>(List.of("Test.allTheThings() T-Shirt (Red)","Sauce Labs Onesie")), driver));
     }
     
